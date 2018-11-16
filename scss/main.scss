@@ -135,8 +135,17 @@ button {
         }
 
         #one {
-            background-image: url('../img/snowman.jpeg');
-            background-position:  70% 50%;
+            background-color: black;
+
+            #wrap {
+                width: 100%;
+                height: auto;
+                position: absolute;
+                overflow: hidden;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 1px dashed red;
+            }
         }
 
         #two {

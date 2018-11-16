@@ -159,8 +159,18 @@ button {
 }
 
 .inside .slider #one {
-  background-image: url("../img/snowman.jpeg");
-  background-position: 70% 50%;
+  background-color: black;
+}
+
+.inside .slider #one #wrap {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  overflow: hidden;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  border: 1px dashed red;
 }
 
 .inside .slider #two {

@@ -19,7 +19,11 @@
         <div class="shutter-overlay"></div>
         <div class="lower-shutter"></div>
         <div class="slider">
-            <div class="pic" id="one"></div>
+            <!-- Non-parallax picture on mobile and effect on desktop?-->
+            <!-- TODO: Figure out if you can do the parallax in mobile. If not, do a static image on mobile and a full parallax effect on desktop -->
+            <div class="pic" id="one">
+                <div id="wrap"></div>
+            </div>
             <div class="pic" id="two"></div>
             <div class="pic" id="three"></div>
             <div class="pic" id="four"></div>
@@ -27,8 +31,81 @@
         <button class="forward">Click to Go Forward</button>
         <button class="back">Click to Go Back</button>
     </section>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.0/pixi.min.js'></script>
+    <script>
+        function resize() {
+            if (window.innerWidth / window.innerHeight >= ratio) {
+                var w = window.innerHeight * ratio;
+                var h = window.innerHeight;
+            } else {
+                var w = window.innerWidth;
+                var h = window.innerWidth / ratio;
+            }
+            renderer.view.style.width = w + 'px';
+            renderer.view.style.height = h + 'px';
+        }
+        window.onresize = resize;
+    </script>
+    <script>
+            w=window.innerWidth, h = window.innerHeight;
+       var renderer = new PIXI.WebGLRenderer(w, h);
+       var cOutput = document.getElementById('wrap');
+       cOutput.appendChild(renderer.view);
+        
+       var stage = new PIXI.Container();
+       var container = new PIXI.Container();
+       var foreground = new PIXI.Container();
+       stage.addChild(container);
+       stage.addChild(foreground); 
+       
+        
+       var f;
+       var fg;
+       var mousex = w/2, mousey = h/2;
+       var ploader = new PIXI.loaders.Loader();
+        
+       function init(){
+         console.log('dasdsdasd');
+         ploader.add('fg', 'img/ken-bg.jpg'); //insert Orignal 2d Image Here
+         ploader.add('depth', 'img/ken-depth.jpg'); //insert Depth Map Here
+        
+         ploader.once('complete', startMagic);
+         // Begin loading -
+         ploader.load();
+       }
+        
+       function startMagic() {
+         fg = new PIXI.Sprite(ploader.resources.fg.texture);
+        
+         foreground.addChild(fg);
+         
+         d = new PIXI.Sprite(ploader.resources.depth.texture);
+           f = new PIXI.filters.DisplacementFilter(d, 0);
+           fg.filters = [f];  
+           window.onmousemove = function(e) {
+             mousex = e.clientX;
+             mousey = e.clientY;
+           };
+         animate();
+       }
+        
+        
+       function animate() {
+       console.log('aaaaaaaaaa');
+         f.scale.x = (window.innerWidth/2 - mousex) / 90;
+         f.scale.y = (window.innerHeight/2 - mousey) / 90;
+         fg.addChild(d);
+         d.renderable=false;
+          
+         renderer.render(stage);       
+         requestAnimationFrame(animate);
+       }
+        
+       // Start -
+       init();
+        
+           </script>
     <script src="js/script.js"></script>
 </body>
 </html>
