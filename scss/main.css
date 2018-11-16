@@ -1,0 +1,358 @@
+/* CENTER VERTICALLY */
+/* KEYFRAMES */
+/* MEDIA QUERIES (ADD IF MORE ARE NEEDED) */
+/* CLEARFIX MIXIN */
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
+}
+
+body {
+  position: relative;
+  overflow: hidden;
+  font-size: 16px;
+  font-size: 1.6rem;
+  background: #000;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: white;
+}
+
+.forward {
+  bottom: 2rem;
+}
+
+.back {
+  bottom: 0;
+}
+
+.overview {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #143306;
+}
+
+.overview .wheel {
+  width: 46vw;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -15%);
+          transform: translate(-50%, -15%);
+  max-width: 30rem;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 360px) and (orientation: landscape) {
+  .overview .wheel {
+    top: 7%;
+    width: 35vw;
+  }
+}
+
+@media only screen and (min-width: 550px) and (orientation: landscape) {
+  .overview .wheel {
+    width: 32vw;
+  }
+}
+
+.overview .viewmaster {
+  width: 70vw;
+  position: absolute;
+  bottom: 10%;
+  left: 39%;
+  max-width: 60rem;
+  -webkit-transform: translate(-40%, 0);
+          transform: translate(-40%, 0);
+}
+
+@media only screen and (min-width: 360px) and (orientation: landscape) {
+  .overview .viewmaster {
+    width: 60vw;
+    bottom: -20%;
+    left: 40%;
+  }
+}
+
+@media only screen and (min-width: 550px) and (orientation: landscape) {
+  .overview .viewmaster {
+    width: 55vw;
+    bottom: -32%;
+  }
+}
+
+.inside {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  overflow: hidden;
+  /*
+     *  SLIDER STYLING STARTS HERE
+     */
+}
+
+.inside .vm-border {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 3;
+  width: calc(100% - 7rem);
+  height: calc(100% - 7rem);
+  outline: 7rem solid black;
+  border-radius: 4rem;
+  -webkit-box-shadow: 0 0 0 5rem black;
+          box-shadow: 0 0 0 5rem black;
+}
+
+@media only screen and (min-width: 550px) and (orientation: landscape) {
+  .inside .vm-border {
+    width: calc(100% - 8rem);
+    height: calc(100% - 8rem);
+    outline: 8rem solid black;
+  }
+}
+
+.inside img {
+  width: 100%;
+  height: auto;
+}
+
+.inside .slider {
+  width: 100%;
+  height: 100%;
+}
+
+.inside .slider .pic {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.inside .slider #one {
+  background-image: url("../img/snowman.jpeg");
+  background-position: 70% 50%;
+}
+
+.inside .slider #two {
+  background-image: url("../img/xmas.jpg");
+  background-position: 60% 50%;
+}
+
+.inside .slider #three {
+  background-image: url("../img/runner.jpeg");
+  background-position: 40% 50%;
+}
+
+.inside .slider #four {
+  background-image: url("../img/beach.jpeg");
+  background-position: 60% 50%;
+}
+
+/*
+ *  ANIMATION SECTION
+ */
+.shutter-overlay {
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 2;
+  position: absolute;
+  top: -100%;
+}
+
+.lower-shutter {
+  width: 100%;
+  height: 100%;
+  background: black;
+  position: absolute;
+  z-index: 2;
+  top: 100%;
+}
+
+.shutter-effect {
+  -webkit-transform: skewY(5deg);
+          transform: skewY(5deg);
+  -webkit-transform-origin: 25%;
+          transform-origin: 25%;
+  -webkit-animation: 0.8s ease-in-out shutter;
+          animation: 0.8s ease-in-out shutter;
+}
+
+.shutter-back {
+  -webkit-transform: skewY(-5deg);
+          transform: skewY(-5deg);
+  -webkit-transform-origin: 25%;
+          transform-origin: 25%;
+  -webkit-animation: 0.8s ease-in-out backShutter;
+          animation: 0.8s ease-in-out backShutter;
+}
+
+.rotate-out {
+  -webkit-animation: 0.4s ease-in-out rotateOut;
+          animation: 0.4s ease-in-out rotateOut;
+}
+
+.rotate-back {
+  -webkit-animation: 0.4s ease-in-out rotateBack;
+          animation: 0.4s ease-in-out rotateBack;
+}
+
+@-webkit-keyframes shutter {
+  0% {
+    top: -100%;
+  }
+  50% {
+    top: 0%;
+  }
+  100% {
+    top: -100%;
+  }
+}
+
+@keyframes shutter {
+  0% {
+    top: -100%;
+  }
+  50% {
+    top: 0%;
+  }
+  100% {
+    top: -100%;
+  }
+}
+
+@-webkit-keyframes rotateOut {
+  to {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+}
+
+@keyframes rotateOut {
+  to {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+}
+
+@-webkit-keyframes backShutter {
+  0% {
+    top: 100%;
+  }
+  50% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes backShutter {
+  0% {
+    top: 100%;
+  }
+  50% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@-webkit-keyframes rotateBack {
+  to {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+}
+
+@keyframes rotateBack {
+  to {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+}
+
+.flipped-out {
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation: flipOut .3s both ease-in;
+  animation: flipOut 0.3s both ease-in;
+}
+
+.flipped-in {
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation: flipIn .3s both ease-out;
+  animation: flipIn 0.3s both ease-out;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  visibility: visible;
+}
+
+@-webkit-keyframes flipOut {
+  from {
+  }
+  to {
+    -webkit-transform: translateZ(-1000px) rotateY(90deg);
+            transform: translateZ(-1000px) rotateY(90deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes flipOut {
+  from {
+  }
+  to {
+    -webkit-transform: translateZ(-1000px) rotateY(90deg);
+            transform: translateZ(-1000px) rotateY(90deg);
+    opacity: 0.2;
+  }
+}
+
+@-webkit-keyframes flipIn {
+  from {
+    -webkit-transform: translateZ(-1000px) rotateY(-90deg);
+            transform: translateZ(-1000px) rotateY(-90deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes flipIn {
+  from {
+    -webkit-transform: translateZ(-1000px) rotateY(-90deg);
+            transform: translateZ(-1000px) rotateY(-90deg);
+    opacity: 0.2;
+  }
+}
+/*# sourceMappingURL=main.css.map */

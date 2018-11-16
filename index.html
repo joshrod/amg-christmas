@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ViewMaster</title>
+    <link rel="stylesheet" href="scss/main.css">
+</head>
+<body>
+    <section class="overview">
+            <img src="img/wheel2.svg" alt="ViewMaster Wheel" class="wheel">
+            <img class="viewmaster" src="img/viewmaster.png" alt="ViewMaster">
+    </section>
+    <section class="inside">
+        <div class="vm-border"></div>
+        <!-- <svg class="shutter-overlay" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560"><title>top-shutter</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polygon points="960 475.83 0 560 0 0 960 0 960 475.83"/></g></g></svg>
+        <svg class="lower-shutter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560"><title>bottom-shutter</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polygon points="0 84.18 960 0 960 560 0 560 0 84.18"/></g></g></svg> -->
+        <div class="shutter-overlay"></div>
+        <div class="lower-shutter"></div>
+        <div class="slider">
+            <div class="pic" id="one"></div>
+            <div class="pic" id="two"></div>
+            <div class="pic" id="three"></div>
+            <div class="pic" id="four"></div>
+        </div>
+        <button class="forward">Click to Go Forward</button>
+        <button class="back">Click to Go Back</button>
+    </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
